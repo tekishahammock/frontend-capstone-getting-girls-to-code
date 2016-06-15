@@ -1,0 +1,26 @@
+{
+  "name": "frontend-capstone-getting-girls-to-code",
+  "version": "1.0.0",
+  "description": "This product, made as a significant project during my time as a Nashville Software School student, is a game made to get middleschool-aged girls interesting in web development. Development features of this game include use of Angular and Sass to achieve an easily understood, architecturally sound code base on which the game can be modified or expanded.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tekishahammock/frontend-capstone-getting-girls-to-code.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tekishahammock/frontend-capstone-getting-girls-to-code/issues"
+  },
+  "homepage": "https://github.com/tekishahammock/frontend-capstone-getting-girls-to-code#readme",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "node-sass": "^3.7.0",
+    "run-sequence": "^1.2.1"
+  }
+}
