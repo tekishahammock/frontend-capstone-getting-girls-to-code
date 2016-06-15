@@ -8,6 +8,6 @@ The final product is particularly close to my heart, in that it allows me to do 
 This game is the beginning of an effort to make technology more accessible and desirable to young girls. Just as we expose our daughters to dance classes and art and our sons to Legos and Space Camp, we must be willing to provide all of our children with every opportunity to discover what it is that sparks their interest and lights them up.
 
 ### Game Code and Use Details
-*Getting Girls to Code* was made using the Angular framework, Sass for CSS compilation, and Firebase as the game's back-end component. It specifically takes advantage of ES6 syntax and uses CSS transitions and animations in lieu of more traditional Javascript animations. The code here is provided for personal, non-commercial use. Please request written permission to modify, expand, publish, or sell any or all parts of this program.
+*Getting Girls to Code* was made using the Angular framework, Sass for CSS compilation, and Firebase as the game's back-end component. It specifically takes advantage of ES6 syntax and uses CSS transitions and animations in lieu of more traditional Javascript animations. The code here is provided for personal, non-commercial use. Please request written permission to publish, sub-license or sell any or all parts of this program.
 
 ### Credits
