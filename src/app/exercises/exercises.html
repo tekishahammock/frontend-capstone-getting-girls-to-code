@@ -1,0 +1,78 @@
+  <h1>Can you answer all of the coding questions?</h1>
+  <div>
+    <!-- Question type: multiple-choice -->
+    <div ng-show="exercise.type == 'multiple-choice'">
+      <div ng-show="firstSection">
+        <p>{{exercise.paragraph1}}</p>
+        <a href="" ng-click="next()">Next</a>
+      </div>
+      <div ng-show="secondSection">
+        <p>{{exercise.paragraph2}}</p>
+        <a href="" ng-click="next()">Next</a>
+      </div>
+      <div ng-show="lastSection">
+        <p>{{exercise.question}}</p>
+        <div ng-repeat="(key, value) in exercise.answer">
+          <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+        </div>
+
+        <div ng-show="correct">
+          <p>You got it right!</p>
+        </div>
+        <div ng-show="incorrect">
+          <p>That's not quite right. Let's try again!</p>
+        </div>
+        <a href="" class="submit-answer" ng-hide="correct" ng-click="evaluateMultipleChoice()">Submit Answer</a>
+        <a href="#/exercises/q{{exercise.next}}" ng-show="correct">Next Exercise!</a>
+      </div>
+    </div>
+    <!-- Question type: fill-blank -->
+    <div ng-show="exercise.type == 'fill-blank'">
+      <div ng-show="firstSection">
+        <p>{{exercise.paragraph1}}</p>
+        <a href="" ng-click="next()">Next</a>
+      </div>
+      <div ng-show="secondSection">
+        <p>{{exercise.paragraph2}}</p>
+        <a href="" ng-click="next()">Next</a>
+      </div>
+      <div ng-show="lastSection">
+        <p>{{exercise.question}}</p>
+        <input type="text" ng-model="userInput" placeholder="Please put your answer here"></input>
+
+        <div ng-show="correct">
+          <p>You got it right!</p>
+        </div>
+        <div ng-show="incorrect">
+          <p>That's not quite right. Let's try again!</p>
+        </div>
+        <a href="" ng-hide="correct" ng-click="evaluateFillBlank()">Submit Answer</a>
+        <a href="#/exercises/q{{exercise.next}}" ng-show="correct">Next Exercise!</a>
+      </div>
+    </div>
+    <!-- Question type: no-wrong-answer -->
+    <div ng-show="exercise.type == 'no-wrong-answer'">
+      <div ng-show="firstSection">
+        <p>{{exercise.paragraph1}}</p>
+        <a href="" ng-click="next()">Next</a>
+      </div>
+      <div ng-show="secondSection">
+        <p>{{exercise.question}}</p>
+        <div ng-repeat="(key, value) in exercise.options">
+          <button href="" class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+        </div>
+
+        <div ng-show="correct">
+          <p>You got it right!</p>
+        </div>
+        <div ng-show="incorrect">
+          <p>That's not quite right. Let's try again!</p>
+        </div>
+        <a href="#/exercises/q{{exercise.next}}" ng-click="evaluateUserPreference()">Submit Answer</a>
+      </div>
+    </div>
+    <!-- Question type: last-question -->
+    <div ng-show="exercise.type == 'last-question'">
+      <p>{{exercise.paragraph1}}</p>
+    </div>
+  </div>
