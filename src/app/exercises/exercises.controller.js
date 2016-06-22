@@ -2,8 +2,11 @@ angular.module("app")
   .controller("ExercisesCtrl", function($scope, $routeParams, ExercisesFactory){
     const currentQuestion = parseInt(($routeParams.question).replace("q", "")) - 1;
     $scope.exercise = ExercisesFactory.all()[currentQuestion];
-    $scope.exercise.next = "";
+    $scope.exercise.next = parseInt(($routeParams.question).replace("q", "")) + 1;
     const answerList = document.getElementsByClassName("answers");
+    $scope.firstSection = true;
+    $scope.secondSection = false;
+    $scope.lastSection = false;
 
     // Toggles selected class on Multiple Choice
     $scope.userSelectedAnswer = () => {
@@ -45,8 +48,19 @@ angular.module("app")
       console.log($scope.selectedAnswer.value);
     };
 
-    // Moves to the next question in the exercise list
-    $scope.nextExercise = () => {
-      console.log("Next question!");
-    };
+    $scope.next = () => {
+      if ($scope.firstSection === true) {
+        $scope.firstSection = false;
+        $scope.secondSection = true;
+        $scope.lastSection = false;
+      } else if ($scope.secondSection === true) {
+        $scope.firstSection = false;
+        $scope.secondSection = false;
+        $scope.lastSection = true;
+      } else {
+        $scope.firstSection = true;
+        $scope.secondSection = false;
+        $scope.lastSection = false;
+      }
+    }
   });

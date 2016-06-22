@@ -2,15 +2,15 @@
   <div>
     <!-- Question type: multiple-choice -->
     <div ng-show="exercise.type == 'multiple-choice'">
-      <div>
+      <div ng-show="firstSection">
         <p>{{exercise.paragraph1}}</p>
-        <a href="" ng-click="show = second">Next</a>
+        <a href="" ng-click="next()">Next</a>
       </div>
-      <div>
+      <div ng-show="secondSection">
         <p>{{exercise.paragraph2}}</p>
-        <a href="" ng-click="show = last">Next</a>
+        <a href="" ng-click="next()">Next</a>
       </div>
-      <div>
+      <div ng-show="lastSection">
         <p>{{exercise.question}}</p>
         <div ng-repeat="(key, value) in exercise.answer">
           <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
@@ -23,20 +23,20 @@
           <p>That's not quite right. Let's try again!</p>
         </div>
         <a href="" class="submit-answer" ng-hide="correct" ng-click="evaluateMultipleChoice()">Submit Answer</a>
-        <a href="#/exercises/{{exercise.next}}" ng-show="correct" ng-click="nextExercise()">Next Exercise!</a>
+        <a href="#/exercises/q{{exercise.next}}" ng-show="correct">Next Exercise!</a>
       </div>
     </div>
     <!-- Question type: fill-blank -->
     <div ng-show="exercise.type == 'fill-blank'">
-      <div>
+      <div ng-show="firstSection">
         <p>{{exercise.paragraph1}}</p>
         <a href="" ng-click="next()">Next</a>
       </div>
-      <div>
+      <div ng-show="secondSection">
         <p>{{exercise.paragraph2}}</p>
         <a href="" ng-click="next()">Next</a>
       </div>
-      <div>
+      <div ng-show="lastSection">
         <p>{{exercise.question}}</p>
         <input type="text" ng-model="userInput" placeholder="Please put your answer here"></input>
 
@@ -47,16 +47,16 @@
           <p>That's not quite right. Let's try again!</p>
         </div>
         <a href="" ng-hide="correct" ng-click="evaluateFillBlank()">Submit Answer</a>
-        <a href="#/exercises/" ng-show="correct" ng-click="nextExercise()">Next Exercise!</a>
+        <a href="#/exercises/q{{exercise.next}}" ng-show="correct">Next Exercise!</a>
       </div>
     </div>
     <!-- Question type: no-wrong-answer -->
     <div ng-show="exercise.type == 'no-wrong-answer'">
-      <div>
+      <div ng-show="firstSection">
         <p>{{exercise.paragraph1}}</p>
         <a href="" ng-click="next()">Next</a>
       </div>
-      <div>
+      <div ng-show="secondSection">
         <p>{{exercise.question}}</p>
         <div ng-repeat="(key, value) in exercise.options">
           <button href="" class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
@@ -68,7 +68,11 @@
         <div ng-show="incorrect">
           <p>That's not quite right. Let's try again!</p>
         </div>
-        <a href="" ng-click="evaluateUserPreference()">Submit Answer</a>
+        <a href="#/exercises/q{{exercise.next}}" ng-click="evaluateUserPreference()">Submit Answer</a>
       </div>
+    </div>
+    <!-- Question type: last-question -->
+    <div ng-show="exercise.type == 'last-question'">
+      <p>{{exercise.paragraph1}}</p>
     </div>
   </div>

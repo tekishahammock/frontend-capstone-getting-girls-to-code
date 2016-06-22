@@ -34,6 +34,10 @@ angular.module("app")
           red: "red",
           pink: "pink"
         }
+      },
+      {
+        type: "last-question",
+        paragraph1: "You answered all of the questions! Huzzah!"
       }
     ];
 
