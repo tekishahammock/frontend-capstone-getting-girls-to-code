@@ -12,7 +12,7 @@
       </div>
       <div ng-show="lastSection">
         <p>{{exercise.question}}</p>
-        <div ng-repeat="(key, value) in exercise.answer">
+        <div ng-repeat="(key, value) in exercise.answer track by $index">
           <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
         </div>
 

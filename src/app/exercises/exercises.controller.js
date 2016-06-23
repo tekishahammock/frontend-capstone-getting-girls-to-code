@@ -1,8 +1,12 @@
 angular.module("app")
-  .controller("ExercisesCtrl", function($scope, $routeParams, ExercisesFactory){
-    const currentQuestion = parseInt(($routeParams.question).replace("q", "")) - 1;
-    $scope.exercise = ExercisesFactory.all()[currentQuestion];
-    $scope.exercise.next = parseInt(($routeParams.question).replace("q", "")) + 1;
+  .controller("ExercisesCtrl", function($scope, $timeout, $routeParams, ExercisesFactory){
+    ExercisesFactory.getExercises().then(data => {
+      const currentQuestion = parseInt(($routeParams.question).replace("q", "")) - 1;
+      $scope.exercisesAll = data;
+      $scope.exercise = $scope.exercisesAll[currentQuestion];
+      $scope.exercise.next = parseInt(($routeParams.question).replace("q", "")) + 1;
+      $timeout();
+    });
     const answerList = document.getElementsByClassName("answers");
     $scope.firstSection = true;
     $scope.secondSection = false;
@@ -19,7 +23,7 @@ angular.module("app")
       $scope.selectedAnswer.classList.add("selected");
     };
 
-    // Evaluates user input for correct answer
+    // // Evaluates user input for correct answer
     $scope.evaluateMultipleChoice = () => {
       if ($scope.selectedAnswer.value === "true") {
         $scope.correct = true;
@@ -32,7 +36,7 @@ angular.module("app")
       }
     };
 
-    // Evaluates user input for correct answer
+    // // Evaluates user input for correct answer
     $scope.evaluateFillBlank = () => {
       if (parseInt($scope.userInput) === $scope.exercise.answer) {
         $scope.correct = true;
@@ -43,7 +47,7 @@ angular.module("app")
       }
     };
 
-    // Pulls user input to affect project appearance
+    // // Pulls user input to affect project appearance
     $scope.evaluateUserPreference = () => {
       console.log($scope.selectedAnswer.value);
     };
