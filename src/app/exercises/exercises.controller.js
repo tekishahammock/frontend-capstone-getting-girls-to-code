@@ -66,5 +66,5 @@ angular.module("app")
         $scope.secondSection = false;
         $scope.lastSection = false;
       }
-    }
+    };
   });

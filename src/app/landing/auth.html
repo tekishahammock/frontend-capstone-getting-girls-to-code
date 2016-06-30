@@ -1,0 +1,15 @@
+<h1>Welcome to Getting Girls to Code!</h1>
+<div ng-hide=" login || register">
+  <a ng-href="#/login" title="">Login!</a>
+  <a ng-href="#/register" title="">Register!</a>
+</div>
+
+<div ng-show="login || register">
+  <label for="user-email">Email:</label>
+  <input id="user-email" ng-model="user.email" type="text"></input>
+  <label for="user-password">Password:</label>
+  <input id="user-password" ng-model="user.password" type="password"></input>
+
+  <button ng-show="login" ng-click="loginUser()">Login</button>
+  <button ng-show="register" ng-click="registerUser()">Register</button>
+</div>

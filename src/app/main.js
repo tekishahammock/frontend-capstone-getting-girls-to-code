@@ -10,7 +10,15 @@ angular.module("app", ["ngRoute"])
   .config(($routeProvider) => {
     $routeProvider
       .when("/", {
-        templateUrl: "app/landing/login.html"
+        templateUrl: "app/landing/auth.html"
+      })
+      .when("/login", {
+        controller: "LoginCtrl",
+        templateUrl: "app/landing/auth.html"
+      })
+      .when("/register", {
+        controller: "RegisterCtrl",
+        templateUrl: "app/landing/auth.html"
       })
       .when("/exercises", {
         controller:"ExercisesCtrl",
