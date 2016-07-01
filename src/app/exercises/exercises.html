@@ -63,12 +63,6 @@
         <button href="" class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
       </div>
 
-      <div ng-show="correct">
-        <p>You got it right!</p>
-      </div>
-      <div ng-show="incorrect">
-        <p>That's not quite right. Let's try again!</p>
-      </div>
       <a href="#/exercises/q{{exercise.next}}" ng-click="evaluateUserPreference()">Submit Answer</a>
     </div>
   </div>
