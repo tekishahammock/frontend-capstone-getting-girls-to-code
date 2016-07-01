@@ -20,6 +20,10 @@ angular.module("app", ["ngRoute"])
         controller: "RegisterCtrl",
         templateUrl: "app/landing/auth.html"
       })
+      .when("/logout", {
+        controller: "LogoutCtrl",
+        templateUrl: "app/landing/logout.html"
+      })
       .when("/exercises", {
         controller:"ExercisesCtrl",
         templateUrl: "app/exercises/exercises.html"
