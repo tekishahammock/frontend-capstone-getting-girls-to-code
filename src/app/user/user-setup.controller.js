@@ -1,5 +1,5 @@
 angular.module("app")
-  .controller("UserSetupCtrl", function($scope, $timeout, AuthFactory, $location) {
+  .controller("UserSetupCtrl", function($scope, $timeout, AuthFactory, UserFactory, $location) {
     const answerList = document.getElementsByClassName("answers");
 
     $scope.userSelectedAnswer = () => {
@@ -12,14 +12,8 @@ angular.module("app")
       $scope.selectedAnswer.classList.add("selected");
     };
 
-
     $scope.createPlayer = () => {
-      firebase.database().ref("/users").update(
-        {[AuthFactory.getUser()]:{
-          username: $scope.user.name,
-          fav_color: $scope.selectedAnswer.value
-        }
-      })
+      UserFactory.initialPlayerPost(AuthFactory.getUser(), $scope.user.name, $scope.selectedAnswer.value)
       .then(() => {
         $location.path("/exercises/q1");
         $timeout();
