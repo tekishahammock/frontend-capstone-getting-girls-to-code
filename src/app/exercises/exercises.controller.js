@@ -1,5 +1,5 @@
 angular.module("app")
-  .controller("ExercisesCtrl", function($scope, $timeout, $routeParams, ExercisesFactory){
+  .controller("ExercisesCtrl", function($scope, $timeout, $routeParams, ExercisesFactory, UserFactory, AuthFactory){
     ExercisesFactory.getExercises().then(data => {
       const currentQuestion = parseInt(($routeParams.question).replace("q", "")) - 1;
       $scope.exercisesAll = data;
@@ -28,6 +28,7 @@ angular.module("app")
       if ($scope.selectedAnswer.value === "true") {
         $scope.correct = true;
         $scope.incorrect = false;
+        UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question, $scope.selectedAnswer.innerHTML);
       } else if ($scope.selectedAnswer.value === "false") {
         $scope.incorrect = true;
         $scope.correct = false;
@@ -41,6 +42,7 @@ angular.module("app")
       if (parseInt($scope.userInput) === $scope.exercise.answer) {
         $scope.correct = true;
         $scope.incorrect = false;
+         UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question, $scope.userInput);
       } else {
         $scope.incorrect = true;
         $scope.correct = false;
@@ -49,7 +51,7 @@ angular.module("app")
 
     // // Pulls user input to affect project appearance
     $scope.evaluateUserPreference = () => {
-      console.log($scope.selectedAnswer.value);
+      UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question, $scope.selectedAnswer.innerHTML);
     };
 
     $scope.next = () => {
