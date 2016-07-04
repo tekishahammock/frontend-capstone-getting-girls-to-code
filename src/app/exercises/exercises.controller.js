@@ -1,5 +1,5 @@
 angular.module("app")
-  .controller("ExercisesCtrl", function($scope, $timeout, $routeParams, ExercisesFactory, UserFactory, AuthFactory){
+  .controller("ExercisesCtrl", function($scope, $rootScope, $timeout, $routeParams, ExercisesFactory, UserFactory, AuthFactory, NavFactory, $location){
     ExercisesFactory.getExercises().then(data => {
       const currentQuestion = parseInt(($routeParams.question).replace("q", "")) - 1;
       $scope.exercisesAll = data;
@@ -11,6 +11,9 @@ angular.module("app")
     $scope.firstSection = true;
     $scope.secondSection = false;
     $scope.lastSection = false;
+
+    UserFactory.setLastExercise(AuthFactory.getUser(), $location.$$path);
+    $rootScope.route = $location.$$path;
 
     // Toggles selected class on Multiple Choice
     $scope.userSelectedAnswer = () => {
@@ -42,7 +45,7 @@ angular.module("app")
       if (parseInt($scope.userInput) === $scope.exercise.answer) {
         $scope.correct = true;
         $scope.incorrect = false;
-         UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question, $scope.userInput);
+        UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question, $scope.userInput);
       } else {
         $scope.incorrect = true;
         $scope.correct = false;
