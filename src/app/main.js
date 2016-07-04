@@ -28,6 +28,10 @@ angular.module("app", ["ngRoute"])
         controller: "UserSetupCtrl",
         templateUrl: "app/user/user-setup.html"
       })
+      .when("/settings", {
+        controller: "SettingsCtrl",
+        templateUrl: "app/user/settings.html"
+      })
       .when("/exercises", {
         controller:"ExercisesCtrl",
         templateUrl: "app/exercises/exercises.html"
@@ -35,6 +39,14 @@ angular.module("app", ["ngRoute"])
       .when("/exercises/:question", {
         controller: "ExercisesCtrl",
         templateUrl: "app/exercises/exercises.html"
+      })
+      .when("/exercise-list", {
+        controller: "ExerciseListCtrl",
+        templateUrl: "app/exercises/exercise-list.html"
+      })
+      .when("/friend-list", {
+        controller: "FriendListCtrl",
+        templateUrl: "app/user/friend-list.html"
       })
       .otherwise("/");
   });

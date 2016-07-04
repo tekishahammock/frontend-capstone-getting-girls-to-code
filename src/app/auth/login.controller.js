@@ -10,17 +10,14 @@ angular.module("app")
         }).catch(alert);
       $scope.userInfo = (snapshot) => {
         if (snapshot === null) {
-          // location pathing is currently requiring a second click
           $location.path("/player-creation");
         } else if (snapshot.exercises === undefined) {
-          // location pathing is currently requiring a second click
           $location.path("/exercises/q1");
         } else {
           const exercisesArray = Object.keys(snapshot.exercises);
           const lastExercise = exercisesArray[(exercisesArray.length) - 1];
           const nextExerciseNum = parseInt(lastExercise.replace("q", "")) + 1;
           const nextExercise = `q${nextExerciseNum}`;
-          // location pathing is currently requiring a second click
           $location.path(`/exercises/${nextExercise}`);
         }
       };

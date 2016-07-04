@@ -3,13 +3,7 @@ angular.module("app")
     const answerList = document.getElementsByClassName("answers");
 
     $scope.userSelectedAnswer = () => {
-      for (let i = 0; i < answerList.length; i++) {
-        if (answerList.item(i).classList.contains("selected")) {
-          answerList.item(i).classList.remove("selected");
-        }
-      }
-      $scope.selectedAnswer = event.target;
-      $scope.selectedAnswer.classList.add("selected");
+      UserFactory.userSelected(answerList, $scope);
     };
 
     $scope.createPlayer = () => {
