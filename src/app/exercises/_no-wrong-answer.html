@@ -1,0 +1,23 @@
+<div ng-show="firstSection">
+  <p>{{exercise.paragraph1}}</p>
+  <div ng-repeat="(key, value) in exercise.choice">
+    <button href="" class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+  </div>
+  <a href="" ng-click="next(); evaluateUserPreference()">Next</a>
+</div>
+
+<div ng-show="secondSection">
+  <p>{{exercise.question1}}</p>
+  <input type="text" ng-model="$parent.userInput1"></input>
+  <input type="text" ng-model="$parent.userInput2"></input>
+
+  <div ng-show="correct">
+    <p>You got it right!</p>
+  </div>
+  <div ng-show="incorrect">
+    <p>That's not quite right. Let's try again!</p>
+  </div>
+
+  <a href="" ng-hide="correct" ng-click="evaluateUserCode()">Submit Answer</a>
+  <a href="#/exercises/q{{exercise.next}}" ng-show="correct">Next</a>
+</div>

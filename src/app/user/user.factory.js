@@ -28,9 +28,9 @@ angular.module("app")
       },
 
 
-      completedExercisePut: (playerID, question, answer) => {
+      completedExercisePut: (playerID, question) => {
         return firebase.database().ref(`/users/${playerID}`).update(
-          {exercises: {[question]: answer}}
+          {exercises: {[question]: "done"}}
         );
       },
 

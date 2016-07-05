@@ -1,0 +1,66 @@
+<!-- first review question -->
+<div ng-show="firstSection">
+  <p>{{exercise.question1}}</p>
+  <div ng-repeat="(key, value) in exercise.answer1">
+    <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+  </div>
+
+  <div ng-show="correct">
+    <p>You got it right!</p>
+  </div>
+  <div ng-show="incorrect">
+    <p>That's not quite right. Let's try again!</p>
+  </div>
+  <a href="" class="submit-answer" ng-hide="correct" ng-click="evaluateMultipleChoice()">Submit Answer</a>
+  <a href="" ng-show="correct" ng-click="next()">Next</a>
+</div>
+<!-- second review question -->
+<div ng-show="secondSection">
+  <p>{{exercise.question2}}</p>
+  <div ng-repeat="(key, value) in exercise.answer2">
+    <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+  </div>
+
+  <div ng-show="correct">
+    <p>You got it right!</p>
+  </div>
+  <div ng-show="incorrect">
+    <p>That's not quite right. Let's try again!</p>
+  </div>
+  <a href="" class="submit-answer" ng-hide="correct" ng-click="evaluateMultipleChoice()">Submit Answer</a>
+  <a href="" ng-show="correct" ng-click="next()">Next</a>
+</div>
+<!-- third review question -->
+<div ng-show="lastSection">
+  <p>{{exercise.question3}}</p>
+  <div ng-repeat="(key, value) in exercise.answer3">
+    <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+  </div>
+
+  <div ng-show="correct">
+    <p>You got it right!</p>
+  </div>
+  <div ng-show="incorrect">
+    <p>That's not quite right. Let's try again!</p>
+  </div>
+  <a href="" class="submit-answer" ng-hide="correct" ng-click="evaluateMultipleChoice()">Submit Answer</a>
+  <a href="" ng-show="correct" ng-click="next()">Next</a>
+</div>
+<!-- fourth review question -->
+<div ng-show="questionShow">
+  <p>{{exercise.question4}}</p>
+  <div ng-repeat="(key, value) in exercise.answer4">
+    <button class="answers" value="{{value}}" ng-click="userSelectedAnswer()">{{key}}</button>
+  </div>
+
+  <div ng-show="correct">
+    <p>You got it right!</p>
+  </div>
+  <div ng-show="incorrect">
+    <p>That's not quite right. Let's try again!</p>
+  </div>
+  <a href="" class="submit-answer" ng-hide="correct" ng-click="evaluateMultipleChoice()">Submit Answer</a>
+  <a href="#/exercise-list" ng-show="correct">Complete Exercises</a>
+</div>
+
+
