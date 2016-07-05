@@ -11,6 +11,7 @@ angular.module("app")
     $scope.firstSection = true;
     $scope.secondSection = false;
     $scope.lastSection = false;
+    $scope.questionShow = false;
 
     UserFactory.setLastExercise(AuthFactory.getUser(), $location.$$path);
     $rootScope.route = $location.$$path;
@@ -41,14 +42,15 @@ angular.module("app")
     };
 
     // // Evaluates user input for correct answer
-    $scope.evaluateFillBlank = () => {
-      if (parseInt($scope.userInput) === $scope.exercise.answer) {
+    $scope.evaluateUserCode = () => {
+      if ($scope.userInput1 == $scope.exercise.answer1 && $scope.userInput2 == $scope.exercise.answer2) {
         $scope.correct = true;
         $scope.incorrect = false;
-        UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question, $scope.userInput);
+        UserFactory.completedExercisePut(AuthFactory.getUser(), $routeParams.question);
       } else {
         $scope.incorrect = true;
         $scope.correct = false;
+        console.log($scope.parent.userInput1, $scope.parent.userInput2);
       }
     };
 
@@ -59,17 +61,29 @@ angular.module("app")
 
     $scope.next = () => {
       if ($scope.firstSection === true) {
+        $scope.correct = null;
         $scope.firstSection = false;
         $scope.secondSection = true;
         $scope.lastSection = false;
+        $scope.questionShow = false;
       } else if ($scope.secondSection === true) {
+        $scope.correct = null;
         $scope.firstSection = false;
         $scope.secondSection = false;
         $scope.lastSection = true;
+        $scope.questionShow = false;
+      } else if ($scope.lastSection === true) {
+        $scope.correct = null;
+        $scope.firstSection = false;
+        $scope.secondSection = false;
+        $scope.lastSection = false;
+        $scope.questionShow = true;
       } else {
+        $scope.correct = null;
         $scope.firstSection = true;
         $scope.secondSection = false;
         $scope.lastSection = false;
+        $scope.questionShow = false;
       }
     };
   });
